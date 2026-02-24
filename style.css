@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #f4f6f8;
   text-align: center;
 }
@@ -15,54 +15,65 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  color: #2c3e50;
+  font-size: 48px;
+  margin-bottom: 50px;
 }
 
-h2 {
-  margin-bottom: 30px;
+.main-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
-.button-group button,
-button {
-  padding: 12px 20px;
-  margin: 10px;
-  font-size: 16px;
+.main-buttons button {
+  width: 300px;
+  height: 70px;
+  font-size: 20px;
+  border-radius: 12px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
   background: #2ecc71;
   color: white;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-button:hover {
+.main-buttons button:hover {
   background: #27ae60;
 }
 
-.back {
-  background: #95a5a6;
-}
-
-.back:hover {
-  background: #7f8c8d;
-}
-
 select {
+  width: 260px;
   padding: 10px;
   font-size: 16px;
-  margin-bottom: 20px;
-  width: 250px;
-  border-radius: 6px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.nav-buttons {
+  margin-top: 30px;
+}
+
+.nav-buttons button {
+  width: 180px;
+  height: 45px;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #2ecc71;
+  color: white;
+  cursor: pointer;
+}
+
+.back {
+  background: #95a5a6 !important;
 }
 
 .result-box {
-  margin-top: 30px;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
+  margin: 30px auto;
+  padding: 25px;
   width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
