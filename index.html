@@ -9,7 +9,10 @@
 
 <!-- ANA SAYFA -->
 <div id="home" class="page active">
-  <h1>Eko-Söz</h1>
+  <div class="logo-box">
+    <h1>Eko-Söz</h1>
+  </div>
+
   <div class="main-buttons">
     <button onclick="goTo('theme')">Temasına Göre</button>
     <button onclick="goTo('period')">Dönemine Göre</button>
@@ -19,9 +22,11 @@
 
 <!-- TEMASINA GÖRE -->
 <div id="theme" class="page">
+  <h1 class="page-title">Temasına Göre</h1>
+
   <h2>Tema Seç</h2>
 
-  <select id="themeSelect">
+  <select>
     <option>Özgürlük</option>
     <option>Ahlak ve Vicdan</option>
     <option>Vatanseverlik ve Sorumluluk</option>
@@ -69,6 +74,8 @@
 
 <!-- DÖNEMİNE GÖRE -->
 <div id="period" class="page">
+  <h1 class="page-title">Dönemine Göre</h1>
+
   <h2>Dönem Seç</h2>
 
   <select>
@@ -127,6 +134,8 @@
 
 <!-- YAZARINA GÖRE -->
 <div id="author" class="page">
+  <h1 class="page-title">Yazarına Göre</h1>
+
   <h2>İki Farklı Yazar Seç</h2>
 
   <select>
@@ -153,6 +162,23 @@
     <option>Yakup Kadri</option>
   </select>
 
+  <h3>Tema Seç (Opsiyonel)</h3>
+
+  <select>
+    <option>Tema Seç (Opsiyonel)</option>
+    <option>Özgürlük</option>
+    <option>Ahlak ve Vicdan</option>
+    <option>Vatanseverlik ve Sorumluluk</option>
+    <option>İnsan–Toplum Çatışması</option>
+    <option>Gelenek–Modernleşme</option>
+    <option>Kader ve İrade</option>
+    <option>Ölüm ve Yaşam</option>
+    <option>Adalet ve Eşitlik</option>
+    <option>Aşk ve Bağlılık</option>
+    <option>Sevgi ve Nefret</option>
+    <option>Yalnızlık ve İç Hesaplaşma</option>
+  </select>
+
   <div class="nav-buttons">
     <button onclick="goTo('result')">Metin Oluştur</button>
     <button onclick="goTo('home')" class="back">Geri</button>
@@ -161,7 +187,7 @@
 
 <!-- SONUÇ -->
 <div id="result" class="page">
-  <h2>Sonuç Sayfası</h2>
+  <h1 class="page-title">Sonuç</h1>
   <div class="result-box">
     <p>Burada ileride diyalog ve analiz gösterilecektir.</p>
   </div>
