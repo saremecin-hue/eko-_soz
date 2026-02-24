@@ -77,3 +77,23 @@ select {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+.logo-box {
+  display: inline-block;
+  padding: 30px 60px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  margin-bottom: 60px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.logo-box h1 {
+  margin: 0;
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+.page-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
