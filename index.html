@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Eko-Söz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <!-- HOME -->
+  <div id="home" class="page active">
+    <h1>Eko-Söz</h1>
+    <div class="button-group">
+      <button onclick="goTo('theme')">Temasına Göre</button>
+      <button onclick="goTo('period')">Dönemine Göre</button>
+      <button onclick="goTo('author')">Yazarına Göre</button>
+    </div>
+  </div>
+
+  <!-- TEMA SAYFASI -->
+  <div id="theme" class="page">
+    <h2>Tema Seç</h2>
+    <select id="themeSelect">
+      <option>Özgürlük</option>
+      <option>Ahlak ve Vicdan</option>
+      <option>Vatanseverlik ve Sorumluluk</option>
+      <option>İnsan–Toplum Çatışması</option>
+      <option>Gelenek–Modernleşme</option>
+      <option>Kader ve İrade</option>
+      <option>Ölüm ve Yaşam</option>
+      <option>Adalet ve Eşitlik</option>
+      <option>Aşk ve Bağlılık</option>
+      <option>Sevgi ve Nefret</option>
+      <option>Yalnızlık ve İç Hesaplaşma</option>
+    </select>
+
+    <button onclick="goTo('result')">Devam Et</button>
+    <button onclick="goTo('home')" class="back">Geri</button>
+  </div>
+
+  <!-- DÖNEM SAYFASI -->
+  <div id="period" class="page">
+    <h2>Dönem Seç</h2>
+    <select>
+      <option>İslamiyet Öncesi</option>
+      <option>Halk Edebiyatı</option>
+      <option>Divan Edebiyatı</option>
+      <option>Tanzimat</option>
+      <option>Servet-i Fünun</option>
+      <option>Fecr-i Ati</option>
+      <option>Milli Edebiyat</option>
+      <option>Cumhuriyet</option>
+    </select>
+
+    <button onclick="goTo('result')">Devam Et</button>
+    <button onclick="goTo('home')" class="back">Geri</button>
+  </div>
+
+  <!-- YAZAR SAYFASI -->
+  <div id="author" class="page">
+    <h2>Yazar Seç</h2>
+    <select>
+      <option>Namık Kemal</option>
+      <option>Tevfik Fikret</option>
+      <option>Yahya Kemal</option>
+      <option>Ahmet Hamdi Tanpınar</option>
+      <option>Orhan Veli</option>
+      <option>Necip Fazıl</option>
+      <option>Halide Edib</option>
+      <option>Yakup Kadri</option>
+    </select>
+
+    <button onclick="goTo('result')">Devam Et</button>
+    <button onclick="goTo('home')" class="back">Geri</button>
+  </div>
+
+  <!-- SONUÇ SAYFASI -->
+  <div id="result" class="page">
+    <h2>Sonuç Sayfası</h2>
+    <div class="result-box">
+      <p>Burada ileride diyalog ve analiz görünecek.</p>
+    </div>
+    <button onclick="goTo('home')" class="back">Ana Sayfa</button>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
