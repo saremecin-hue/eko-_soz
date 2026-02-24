@@ -7,81 +7,166 @@
 </head>
 <body>
 
-  <!-- HOME -->
-  <div id="home" class="page active">
-    <h1>Eko-Söz</h1>
-    <div class="button-group">
-      <button onclick="goTo('theme')">Temasına Göre</button>
-      <button onclick="goTo('period')">Dönemine Göre</button>
-      <button onclick="goTo('author')">Yazarına Göre</button>
-    </div>
+<!-- ANA SAYFA -->
+<div id="home" class="page active">
+  <h1>Eko-Söz</h1>
+  <div class="main-buttons">
+    <button onclick="goTo('theme')">Temasına Göre</button>
+    <button onclick="goTo('period')">Dönemine Göre</button>
+    <button onclick="goTo('author')">Yazarına Göre</button>
   </div>
+</div>
 
-  <!-- TEMA SAYFASI -->
-  <div id="theme" class="page">
-    <h2>Tema Seç</h2>
-    <select id="themeSelect">
-      <option>Özgürlük</option>
-      <option>Ahlak ve Vicdan</option>
-      <option>Vatanseverlik ve Sorumluluk</option>
-      <option>İnsan–Toplum Çatışması</option>
-      <option>Gelenek–Modernleşme</option>
-      <option>Kader ve İrade</option>
-      <option>Ölüm ve Yaşam</option>
-      <option>Adalet ve Eşitlik</option>
-      <option>Aşk ve Bağlılık</option>
-      <option>Sevgi ve Nefret</option>
-      <option>Yalnızlık ve İç Hesaplaşma</option>
-    </select>
+<!-- TEMASINA GÖRE -->
+<div id="theme" class="page">
+  <h2>Tema Seç</h2>
 
-    <button onclick="goTo('result')">Devam Et</button>
+  <select id="themeSelect">
+    <option>Özgürlük</option>
+    <option>Ahlak ve Vicdan</option>
+    <option>Vatanseverlik ve Sorumluluk</option>
+    <option>İnsan–Toplum Çatışması</option>
+    <option>Gelenek–Modernleşme</option>
+    <option>Kader ve İrade</option>
+    <option>Ölüm ve Yaşam</option>
+    <option>Adalet ve Eşitlik</option>
+    <option>Aşk ve Bağlılık</option>
+    <option>Sevgi ve Nefret</option>
+    <option>Yalnızlık ve İç Hesaplaşma</option>
+  </select>
+
+  <h3>Konuşmacı Yazarlar (İsteğe Bağlı)</h3>
+
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <div class="nav-buttons">
+    <button onclick="goTo('result')">Metin Oluştur</button>
     <button onclick="goTo('home')" class="back">Geri</button>
   </div>
+</div>
 
-  <!-- DÖNEM SAYFASI -->
-  <div id="period" class="page">
-    <h2>Dönem Seç</h2>
-    <select>
-      <option>İslamiyet Öncesi</option>
-      <option>Halk Edebiyatı</option>
-      <option>Divan Edebiyatı</option>
-      <option>Tanzimat</option>
-      <option>Servet-i Fünun</option>
-      <option>Fecr-i Ati</option>
-      <option>Milli Edebiyat</option>
-      <option>Cumhuriyet</option>
-    </select>
+<!-- DÖNEMİNE GÖRE -->
+<div id="period" class="page">
+  <h2>Dönem Seç</h2>
 
-    <button onclick="goTo('result')">Devam Et</button>
+  <select>
+    <option>İslamiyet Öncesi</option>
+    <option>Halk Edebiyatı</option>
+    <option>Divan Edebiyatı</option>
+    <option>Tanzimat</option>
+    <option>Servet-i Fünun</option>
+    <option>Fecr-i Ati</option>
+    <option>Milli Edebiyat</option>
+    <option>Cumhuriyet</option>
+  </select>
+
+  <select>
+    <option>İslamiyet Öncesi</option>
+    <option>Halk Edebiyatı</option>
+    <option>Divan Edebiyatı</option>
+    <option>Tanzimat</option>
+    <option>Servet-i Fünun</option>
+    <option>Fecr-i Ati</option>
+    <option>Milli Edebiyat</option>
+    <option>Cumhuriyet</option>
+  </select>
+
+  <h3>Konuşmacı Yazarlar (İsteğe Bağlı)</h3>
+
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <div class="nav-buttons">
+    <button onclick="goTo('result')">Metin Oluştur</button>
     <button onclick="goTo('home')" class="back">Geri</button>
   </div>
+</div>
 
-  <!-- YAZAR SAYFASI -->
-  <div id="author" class="page">
-    <h2>Yazar Seç</h2>
-    <select>
-      <option>Namık Kemal</option>
-      <option>Tevfik Fikret</option>
-      <option>Yahya Kemal</option>
-      <option>Ahmet Hamdi Tanpınar</option>
-      <option>Orhan Veli</option>
-      <option>Necip Fazıl</option>
-      <option>Halide Edib</option>
-      <option>Yakup Kadri</option>
-    </select>
+<!-- YAZARINA GÖRE -->
+<div id="author" class="page">
+  <h2>İki Farklı Yazar Seç</h2>
 
-    <button onclick="goTo('result')">Devam Et</button>
+  <select>
+    <option>Yazar Seç</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <select>
+    <option>Yazar Seç</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <div class="nav-buttons">
+    <button onclick="goTo('result')">Metin Oluştur</button>
     <button onclick="goTo('home')" class="back">Geri</button>
   </div>
+</div>
 
-  <!-- SONUÇ SAYFASI -->
-  <div id="result" class="page">
-    <h2>Sonuç Sayfası</h2>
-    <div class="result-box">
-      <p>Burada ileride diyalog ve analiz görünecek.</p>
-    </div>
-    <button onclick="goTo('home')" class="back">Ana Sayfa</button>
+<!-- SONUÇ -->
+<div id="result" class="page">
+  <h2>Sonuç Sayfası</h2>
+  <div class="result-box">
+    <p>Burada ileride diyalog ve analiz gösterilecektir.</p>
   </div>
+  <button onclick="goTo('home')" class="back">Ana Sayfa</button>
+</div>
 
 <script src="script.js"></script>
 </body>
