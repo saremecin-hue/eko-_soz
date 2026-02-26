@@ -1,150 +1,199 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eko-Söz | Analitik Edebiyat Platformu</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .header-oval { border-radius: 999px; border: 2px solid black; background: #4ade80; padding: 10px 45px; font-weight: 800; display: inline-block; box-shadow: 4px 4px 0px 0px rgba(0,0,0,1); text-transform: uppercase; }
-        .eko-btn { background: #22c55e; color: white; border-radius: 999px; padding: 15px 35px; font-weight: bold; width: 100%; transition: 0.3s; border: 2px solid transparent; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        .eko-btn:hover { background: #16a34a; border-color: black; transform: translateY(-2px); }
-        .page { display: none; min-height: 100vh; padding: 40px 20px; flex-direction: column; align-items: center; }
-        .page.active { display: flex; }
-        .input-style { width: 100%; padding: 12px; border: 2px solid #22c55e; border-radius: 15px; margin-bottom: 15px; background: white; appearance: none; }
-        .card-box { width: 100%; max-width: 450px; background: white; p: 2rem; border-radius: 2rem; border: 2px solid #f0fdf4; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); padding: 2rem; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Eko-Söz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-gray-900">
+<body>
 
-    <div id="page1" class="page active justify-center">
-        <h1 class="text-6xl font-black text-green-600 mb-16 italic tracking-tighter">Eko-Söz</h1>
-        <div class="flex flex-col gap-6 w-full max-w-sm">
-            <button onclick="showPage('page2')" class="eko-btn text-lg">Dönemine Göre</button>
-            <button onclick="showPage('page3')" class="eko-btn text-lg">Yazarına Göre</button>
-            <button onclick="showPage('page4')" class="eko-btn text-lg">Temasına Göre</button>
-        </div>
-    </div>
+<!-- ANA SAYFA -->
+<div id="home" class="page active">
+  <div class="logo-box">
+    <h1>Eko-Söz</h1>
+  </div>
 
-    <div id="page2" class="page">
-        <div class="header-oval mb-12">Dönemine Göre</div>
-        <div class="card-box">
-            <label class="font-bold block mb-2">1. Dönemi Seçin</label>
-            <select id="donem1" class="input-style">
-                <option>Tanzimat Edebiyatı</option>
-                <option>Servet-i Fünun</option>
-                <option>Milli Edebiyat</option>
-                <option>Cumhuriyet Dönemi</option>
-            </select>
-            <label class="font-bold block mb-2">2. Dönemi Seçin</label>
-            <select id="donem2" class="input-style">
-                <option>Divan Edebiyatı</option>
-                <option>Halk Edebiyatı</option>
-                <option>Cumhuriyet Dönemi</option>
-            </select>
-            <button onclick="metinUret('donem')" class="eko-btn mt-4">Analiz Et</button>
-            <button onclick="showPage('page1')" class="mt-6 block w-full text-center text-gray-400">Ana Menüye Dön</button>
-        </div>
-    </div>
+  <div class="main-buttons">
+    <button onclick="goTo('theme')">Temasına Göre</button>
+    <button onclick="goTo('period')">Dönemine Göre</button>
+    <button onclick="goTo('author')">Yazarına Göre</button>
+  </div>
+</div>
 
-    <div id="page3" class="page">
-        <div class="header-oval mb-12">Yazarına Göre</div>
-        <div class="card-box">
-            <label class="font-bold block mb-2">1. Yazarı Seçin</label>
-            <select id="y1" class="input-style">
-                <option>Namık Kemal</option>
-                <option>Ahmet Hamdi Tanpınar</option>
-                <option>Halit Ziya Uşaklıgil</option>
-            </select>
-            <label class="font-bold block mb-2">2. Yazarı Seçin</label>
-            <select id="y2" class="input-style">
-                <option>Sabahattin Ali</option>
-                <option>Tevfik Fikret</option>
-                <option>Ömer Seyfettin</option>
-            </select>
-            <button onclick="metinUret('yazar')" class="eko-btn mt-4">Karşılaştır</button>
-            <button onclick="showPage('page1')" class="mt-6 block w-full text-center text-gray-400">Ana Menüye Dön</button>
-        </div>
-    </div>
+<!-- TEMASINA GÖRE -->
+<div id="theme" class="page">
+  <h1 class="page-title">Temasına Göre</h1>
 
-    <div id="page4" class="page">
-        <div class="header-oval mb-12">Temasına Göre</div>
-        <div class="card-box">
-            <label class="font-bold block mb-4 text-center">İşlenecek Temayı Seçin</label>
-            <div class="grid grid-cols-1 gap-3 overflow-y-auto max-h-64 mb-6 pr-2" id="temaListesi">
-                </div>
-            <button onclick="metinUret('tema')" class="eko-btn">Metni Oluştur</button>
-            <button onclick="showPage('page1')" class="mt-6 block w-full text-center text-gray-400">Ana Menüye Dön</button>
-        </div>
-    </div>
+  <h2>Tema Seç</h2>
 
-    <div id="page5" class="page">
-        <div class="header-oval mb-8">Edebi Analiz</div>
-        <div id="yukleniyor" class="hidden flex flex-col items-center">
-            <div class="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p class="font-bold text-green-600">Analitik DNA işleniyor...</p>
-        </div>
-        <div id="sonucAlani" class="w-full max-w-4xl bg-white p-10 rounded-3xl shadow-2xl border-t-8 border-green-500 hidden">
-            <div id="output" class="prose max-w-none text-lg leading-relaxed whitespace-pre-wrap"></div>
-            <hr class="my-8">
-            <button onclick="showPage('page1')" class="text-green-600 font-bold">← Yeni Analiz Yap</button>
-        </div>
-    </div>
+  <select>
+    <option>Özgürlük</option>
+    <option>Ahlak ve Vicdan</option>
+    <option>Vatanseverlik ve Sorumluluk</option>
+    <option>İnsan–Toplum Çatışması</option>
+    <option>Gelenek–Modernleşme</option>
+    <option>Kader ve İrade</option>
+    <option>Ölüm ve Yaşam</option>
+    <option>Adalet ve Eşitlik</option>
+    <option>Aşk ve Bağlılık</option>
+    <option>Sevgi ve Nefret</option>
+    <option>Yalnızlık ve İç Hesaplaşma</option>
+  </select>
 
-    <script>
-        const temalar = ["Özgürlük", "Aşk ve Bağlılık", "Vatan Sevgisi", "Kader ve İrade", "Yalnızlık", "Adalet"];
-        let secilenTema = "Özgürlük";
+  <h3>Konuşmacı Yazarlar (İsteğe Bağlı)</h3>
 
-        // Tema listesini oluşturma
-        const temaContainer = document.getElementById('temaListesi');
-        temalar.forEach(t => {
-            const b = document.createElement('button');
-            b.innerText = t;
-            b.className = "w-full p-3 rounded-xl border-2 border-green-100 hover:bg-green-50 transition text-left";
-            b.onclick = () => {
-                document.querySelectorAll('#temaListesi button').forEach(btn => btn.classList.remove('bg-green-500', 'text-white'));
-                b.classList.add('bg-green-500', 'text-white');
-                secilenTema = t;
-            };
-            temaContainer.appendChild(b);
-        });
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
 
-        function showPage(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById(id);
-            if(target) target.classList.add('active');
-        }
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
 
-        async function metinUret(tip) {
-            showPage('page5');
-            document.getElementById('yukleniyor').classList.remove('hidden');
-            document.getElementById('sonucAlani').classList.add('hidden');
+  <div class="nav-buttons">
+    <button onclick="goTo('result')">Metin Oluştur</button>
+    <button onclick="goTo('home')" class="back">Geri</button>
+  </div>
+</div>
 
-            // Analitik Prompt Parametreleri (Burayı 80 yazar kartına göre genişletebilirsin)
-            let promptMetni = `Tema: ${secilenTema}. Bu konuda 500 kelimelik edebi bir analiz yaz.`;
-            
-            if(tip === 'yazar') {
-                const y1 = document.getElementById('y1').value;
-                const y2 = document.getElementById('y2').value;
-                promptMetni = `${y1} ve ${y2} yazarlarının üsluplarını karşılaştırarak ${secilenTema} üzerine bir metin yaz.`;
-            }
+<!-- DÖNEMİNE GÖRE -->
+<div id="period" class="page">
+  <h1 class="page-title">Dönemine Göre</h1>
 
-            try {
-                const res = await fetch('/api/generate', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ prompt: promptMetni })
-                });
-                const data = await res.json();
-                document.getElementById('output').innerText = data.text;
-                document.getElementById('sonucAlani').classList.remove('hidden');
-            } catch (e) {
-                document.getElementById('output').innerText = "Hata: API anahtarı veya bağlantı sorunu.";
-                document.getElementById('sonucAlani').classList.remove('hidden');
-            } finally {
-                document.getElementById('yukleniyor').classList.add('hidden');
-            }
-        }
-    </script>
+  <h2>Dönem Seç</h2>
+
+  <select>
+    <option>İslamiyet Öncesi</option>
+    <option>Halk Edebiyatı</option>
+    <option>Divan Edebiyatı</option>
+    <option>Tanzimat</option>
+    <option>Servet-i Fünun</option>
+    <option>Fecr-i Ati</option>
+    <option>Milli Edebiyat</option>
+    <option>Cumhuriyet</option>
+  </select>
+
+  <select>
+    <option>İslamiyet Öncesi</option>
+    <option>Halk Edebiyatı</option>
+    <option>Divan Edebiyatı</option>
+    <option>Tanzimat</option>
+    <option>Servet-i Fünun</option>
+    <option>Fecr-i Ati</option>
+    <option>Milli Edebiyat</option>
+    <option>Cumhuriyet</option>
+  </select>
+
+  <h3>Konuşmacı Yazarlar (İsteğe Bağlı)</h3>
+
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <select>
+    <option>Yazar Seç (Opsiyonel)</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <div class="nav-buttons">
+    <button onclick="goTo('result')">Metin Oluştur</button>
+    <button onclick="goTo('home')" class="back">Geri</button>
+  </div>
+</div>
+
+<!-- YAZARINA GÖRE -->
+<div id="author" class="page">
+  <h1 class="page-title">Yazarına Göre</h1>
+
+  <h2>İki Farklı Yazar Seç</h2>
+
+  <select>
+    <option>Yazar Seç</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <select>
+    <option>Yazar Seç</option>
+    <option>Namık Kemal</option>
+    <option>Tevfik Fikret</option>
+    <option>Yahya Kemal</option>
+    <option>Ahmet Hamdi Tanpınar</option>
+    <option>Orhan Veli</option>
+    <option>Necip Fazıl</option>
+    <option>Halide Edib</option>
+    <option>Yakup Kadri</option>
+  </select>
+
+  <h3>Tema Seç (Opsiyonel)</h3>
+
+  <select>
+    <option>Tema Seç (Opsiyonel)</option>
+    <option>Özgürlük</option>
+    <option>Ahlak ve Vicdan</option>
+    <option>Vatanseverlik ve Sorumluluk</option>
+    <option>İnsan–Toplum Çatışması</option>
+    <option>Gelenek–Modernleşme</option>
+    <option>Kader ve İrade</option>
+    <option>Ölüm ve Yaşam</option>
+    <option>Adalet ve Eşitlik</option>
+    <option>Aşk ve Bağlılık</option>
+    <option>Sevgi ve Nefret</option>
+    <option>Yalnızlık ve İç Hesaplaşma</option>
+  </select>
+
+  <div class="nav-buttons">
+    <button onclick="goTo('result')">Metin Oluştur</button>
+    <button onclick="goTo('home')" class="back">Geri</button>
+  </div>
+</div>
+
+<!-- SONUÇ -->
+<div id="result" class="page">
+  <h1 class="page-title">Sonuç</h1>
+  <div class="result-box">
+    <p>Burada ileride diyalog ve analiz gösterilecektir.</p>
+  </div>
+  <button onclick="goTo('home')" class="back">Ana Sayfa</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
