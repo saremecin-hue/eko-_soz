@@ -1,202 +1,138 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Eko-Söz</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eko-Söz | Edebi DNA Simülasyonu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
+        .playfair { font-family: 'Playfair Display', serif; }
+        .page { display: none; transition: all 0.3s ease; }
+        .page.active { display: block; }
+        .header-oval {
+            background: #059669; color: white; border-radius: 50px;
+            padding: 1rem 2rem; display: inline-block; font-family: 'Playfair Display', serif;
+        }
+        .eko-btn {
+            background: #059669; color: white; padding: 0.8rem 2rem;
+            border-radius: 12px; font-weight: 600; transition: all 0.2s;
+            width: 100%; margin-top: 1rem;
+        }
+        .eko-btn:hover { background: #047857; transform: translateY(-2px); }
+        .chat-bubble {
+            padding: 1rem 1.5rem; border-radius: 15px; max-width: 85%;
+            margin-bottom: 1rem; line-height: 1.6; animation: fadeIn 0.4s ease;
+        }
+        .yazar1-bubble { align-self: flex-start; background: #ffffff; border-left: 5px solid #059669; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .yazar2-bubble { align-self: flex-end; background: #dcfce7; border-right: 5px solid #2563eb; text-align: right; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
-<body>
+<body class="p-4 md:p-10">
 
-<!-- ANA SAYFA -->
-<div id="home" class="page active">
-  <div class="logo-box">
-    <h1>Eko-Söz</h1>
-  </div>
-
-  <div class="main-buttons">
-    <button onclick="goTo('theme')">Temasına Göre</button>
-    <button onclick="goTo('period')">Dönemine Göre</button>
-    <button onclick="goTo('author')">Yazarına Göre</button>
-  </div>
-</div>
-
-<!-- TEMASINA GÖRE -->
-<div id="theme" class="page">
-  <h1 class="page-title">Temasına Göre</h1>
-
-  <h2>Tema Seç</h2>
-
-  <select>
-    <option>Özgürlük</option>
-    <option>Ahlak ve Vicdan</option>
-    <option>Vatanseverlik ve Sorumluluk</option>
-    <option>İnsan–Toplum Çatışması</option>
-    <option>Gelenek–Modernleşme</option>
-    <option>Kader ve İrade</option>
-    <option>Ölüm ve Yaşam</option>
-    <option>Adalet ve Eşitlik</option>
-    <option>Aşk ve Bağlılık</option>
-    <option>Sevgi ve Nefret</option>
-    <option>Yalnızlık ve İç Hesaplaşma</option>
-  </select>
-
-  <h3>Konuşmacı Yazarlar (İsteğe Bağlı)</h3>
-
-  <select>
-    <option>Yazar Seç (Opsiyonel)</option>
-    <option>Namık Kemal</option>
-    <option>Tevfik Fikret</option>
-    <option>Yahya Kemal</option>
-    <option>Ahmet Hamdi Tanpınar</option>
-    <option>Orhan Veli</option>
-    <option>Necip Fazıl</option>
-    <option>Halide Edib</option>
-    <option>Yakup Kadri</option>
-  </select>
-
-  <select>
-    <option>Yazar Seç (Opsiyonel)</option>
-    <option>Namık Kemal</option>
-    <option>Tevfik Fikret</option>
-    <option>Yahya Kemal</option>
-    <option>Ahmet Hamdi Tanpınar</option>
-    <option>Orhan Veli</option>
-    <option>Necip Fazıl</option>
-    <option>Halide Edib</option>
-    <option>Yakup Kadri</option>
-  </select>
-
-  <div class="nav-buttons">
-    <button onclick="goTo('result')">Metin Oluştur</button>
-    <button onclick="goTo('home')" class="back">Geri</button>
-  </div>
-</div>
-
-<!-- DÖNEMİNE GÖRE -->
-<div id="period" class="page">
-  <h1 class="page-title">Dönemine Göre</h1>
-
-  <h2>Dönem Seç</h2>
-
-  <select>
-    <option>İslamiyet Öncesi</option>
-    <option>Halk Edebiyatı</option>
-    <option>Divan Edebiyatı</option>
-    <option>Tanzimat</option>
-    <option>Servet-i Fünun</option>
-    <option>Fecr-i Ati</option>
-    <option>Milli Edebiyat</option>
-    <option>Cumhuriyet</option>
-  </select>
-
-  <select>
-    <option>İslamiyet Öncesi</option>
-    <option>Halk Edebiyatı</option>
-    <option>Divan Edebiyatı</option>
-    <option>Tanzimat</option>
-    <option>Servet-i Fünun</option>
-    <option>Fecr-i Ati</option>
-    <option>Milli Edebiyat</option>
-    <option>Cumhuriyet</option>
-  </select>
-
-  <h3>Konuşmacı Yazarlar (İsteğe Bağlı)</h3>
-
-  <select>
-    <option>Yazar Seç (Opsiyonel)</option>
-    <option>Namık Kemal</option>
-    <option>Tevfik Fikret</option>
-    <option>Yahya Kemal</option>
-    <option>Ahmet Hamdi Tanpınar</option>
-    <option>Orhan Veli</option>
-    <option>Necip Fazıl</option>
-    <option>Halide Edib</option>
-    <option>Yakup Kadri</option>
-  </select>
-
-  <select>
-    <option>Yazar Seç (Opsiyonel)</option>
-    <option>Namık Kemal</option>
-    <option>Tevfik Fikret</option>
-    <option>Yahya Kemal</option>
-    <option>Ahmet Hamdi Tanpınar</option>
-    <option>Orhan Veli</option>
-    <option>Necip Fazıl</option>
-    <option>Halide Edib</option>
-    <option>Yakup Kadri</option>
-  </select>
-
-  <div class="nav-buttons">
-    <button onclick="goTo('result')">Metin Oluştur</button>
-    <button onclick="goTo('home')" class="back">Geri</button>
-  </div>
-</div>
-
-<!-- YAZARINA GÖRE -->
-<div id="author" class="page">
-  <h1 class="page-title">Yazarına Göre</h1>
-
-  <h2>İki Farklı Yazar Seç</h2>
-
-  <select>
-    <option>Yazar Seç</option>
-    <option>Namık Kemal</option>
-    <option>Tevfik Fikret</option>
-    <option>Yahya Kemal</option>
-    <option>Ahmet Hamdi Tanpınar</option>
-    <option>Orhan Veli</option>
-    <option>Necip Fazıl</option>
-    <option>Halide Edib</option>
-    <option>Yakup Kadri</option>
-  </select>
-
-  <select>
-    <option>Yazar Seç</option>
-    <option>Namık Kemal</option>
-    <option>Tevfik Fikret</option>
-    <option>Yahya Kemal</option>
-    <option>Ahmet Hamdi Tanpınar</option>
-    <option>Orhan Veli</option>
-    <option>Necip Fazıl</option>
-    <option>Halide Edib</option>
-    <option>Yakup Kadri</option>
-  </select>
-
-  <h3>Tema Seç (Opsiyonel)</h3>
-
-  <select>
-    <option>Tema Seç (Opsiyonel)</option>
-    <option>Özgürlük</option>
-    <option>Ahlak ve Vicdan</option>
-    <option>Vatanseverlik ve Sorumluluk</option>
-    <option>İnsan–Toplum Çatışması</option>
-    <option>Gelenek–Modernleşme</option>
-    <option>Kader ve İrade</option>
-    <option>Ölüm ve Yaşam</option>
-    <option>Adalet ve Eşitlik</option>
-    <option>Aşk ve Bağlılık</option>
-    <option>Sevgi ve Nefret</option>
-    <option>Yalnızlık ve İç Hesaplaşma</option>
-  </select>
-
-  <div class="nav-buttons">
-    <button onclick="goTo('result')">Metin Oluştur</button>
-    <button onclick="goTo('home')" class="back">Geri</button>
-  </div>
-</div>
-<div id="page5" class="page hidden">
-    <div class="header-oval mb-8">Edebi Münazara</div>
-    
-    <div id="loading-spinner" class="flex flex-col items-center my-10">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
-        <p class="mt-4 font-bold text-green-700 italic">Yazarların DNA'sı analiz ediliyor...</p>
+    <div id="page1" class="page active text-center">
+        <div class="header-oval mb-10 text-2xl">Eko-Söz: Edebi Karşılaşma</div>
+        <p class="playfair text-xl mb-8 italic">İki farklı devir, iki farklı ruh... Kimin üslubu galip gelecek?</p>
+        <div class="max-w-md mx-auto space-y-4">
+            <select id="yazar1" class="w-full p-3 border rounded-xl">
+                <option value="Halit Ziya Uşaklıgil">Halit Ziya Uşaklıgil</option>
+                <option value="Tarık Buğra">Tarık Buğra</option>
+            </select>
+            <select id="yazar2" class="w-full p-3 border rounded-xl">
+                <option value="Tarık Buğra">Tarık Buğra</option>
+                <option value="Halit Ziya Uşaklıgil">Halit Ziya Uşaklıgil</option>
+            </select>
+            <select id="tema" class="w-full p-3 border rounded-xl">
+                <option value="Ahlak ve Vicdan">Ahlak ve Vicdan</option>
+                <option value="Vatanseverlik ve Özgürlük">Vatanseverlik ve Özgürlük</option>
+                <option value="Aşk ve Sevgi">Aşk ve Sevgi</option>
+            </select>
+            <button onclick="aiSimulasyonuBaslat()" class="eko-btn">Diyaloğu Başlat</button>
+        </div>
     </div>
 
-    <div id="chat-container" class="w-full max-w-4xl flex flex-col space-y-4 overflow-y-auto p-4 hidden" style="max-height: 500px;">
+    <div id="page5" class="page container mx-auto max-w-4xl">
+        <div class="text-center mb-6">
+            <div class="header-oval text-lg">Münazara Odası</div>
+        </div>
+        
+        <div id="loading" class="text-center py-20">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
+            <p class="mt-4 text-green-800 font-semibold italic">Veri setleri analiz ediliyor...</p>
         </div>
 
-    <div class="flex gap-4 mt-8">
-        <button onclick="window.location.reload()" class="eko-btn bg-gray-500">Yeniden Başla</button>
-        <button onclick="downloadChat()" class="eko-btn bg-blue-600">Konuşmayı İndir</button>
+        <div id="chat-box" class="flex flex-col hidden bg-white p-6 rounded-3xl shadow-xl border border-gray-100" style="min-height: 400px;">
+            </div>
+
+        <div class="text-center mt-8">
+            <button onclick="location.reload()" class="text-green-600 font-bold hover:underline">← Başa Dön</button>
+        </div>
     </div>
-</div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        async function aiSimulasyonuBaslat() {
+            const y1 = document.getElementById('yazar1').value;
+            const y2 = document.getElementById('yazar2').value;
+            const tema = document.getElementById('tema').value;
+
+            showPage('page5');
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('chat-box').classList.add('hidden');
+            document.getElementById('chat-box').innerHTML = '';
+
+            try {
+                // 1. Veri setlerini dinamik olarak çek
+                const [styleData, temaText] = await Promise.all([
+                    fetch('style_vectors.json').then(r => r.json()),
+                    fetch('yazar_tema_yorumlari.txt').then(r => r.text())
+                ]);
+
+                const dna1 = styleData[y1]; 
+                const dna2 = styleData[y2];
+                const fikir1 = temaText.split(y1)[1]?.split('----------------')[0];
+                const fikir2 = temaText.split(y2)[1]?.split('----------------')[0];
+
+                // 2. OpenAI API'ye isteği gönder (Vercel API route üzerinden)
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        yazar1: { isim: y1, dna: dna1, fikir: fikir1 },
+                        yazar2: { isim: y2, dna: dna2, fikir: fikir2 },
+                        tema: tema
+                    })
+                });
+
+                const result = await response.json();
+                renderChat(result.text);
+            } catch (err) {
+                console.error(err);
+                alert("Hata: Veri dosyaları (json/txt) bulunamadı veya API hatası.");
+            } finally {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('chat-box').classList.remove('hidden');
+            }
+        }
+
+        function renderChat(text) {
+            const chatBox = document.getElementById('chat-box');
+            const lines = text.split('\n').filter(l => l.includes(':'));
+            
+            lines.forEach((line, index) => {
+                const [name, content] = line.split(':');
+                const bubble = document.createElement('div');
+                bubble.className = `chat-bubble ${index % 2 === 0 ? 'yazar1-bubble' : 'yazar2-bubble'}`;
+                bubble.innerHTML = `<span class="font-bold block text-sm mb-1">${name.trim()}</span>${content.trim()}`;
+                chatBox.appendChild(bubble);
+            });
+        }
+    </script>
+</body>
+</html>
